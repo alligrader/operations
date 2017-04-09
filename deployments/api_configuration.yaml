@@ -1,0 +1,17 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+    name: alligrader-gradebook-backend
+
+spec:
+    replicas: 1
+    template:
+        metadata:
+            labels:
+                app: alligrader-gradebook-backend
+    spec:
+        containers:
+        - name: alligrader-gradebook-backend
+          image: alligrader/gradebook-backend:latest
+          ports:
+          - containerPort: 80

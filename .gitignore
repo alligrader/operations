@@ -1,0 +1,4 @@
+alligrader.json
+*.backup
+.terraform
+*.tfstate
