@@ -11,18 +11,6 @@ output "kubernetes-IP" {
   value = "${google_container_cluster.primary.endpoint}"
 }
 
-
-module "alligrader-on-kubernetes" {
-  source                   = "./kubernetes"
-  server                   = "${google_container_cluster.primary.endpoint}"
-  frontend_configuration   = "${file("deployments/frontend_configuration.yaml")}"
-  api_configuration        = "${file("deployments/api_configuration.yaml")}"
-  autograder_configuration = "${file("deployments/autograder_configuration.yaml")}"
-  username                 = "${var.username}"
-  password                 = "${var.password}"
-  cluster_ca_certificate   = "${google_container_cluster.primary.cluster_ca_certificate}"
-}
-
 provider "google" "alligrader-primary" {
   credentials = "${file("alligrader.json")}"
   project     = "alligrader2018"

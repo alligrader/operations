@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: frontend-service
+spec:
+    type: LoadBalancer
+    selector:
+        app: alligrader-frontend-deployment
+    ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

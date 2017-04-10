@@ -1,17 +1,18 @@
-apiVersion: apps/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: ReplicationController
 metadata:
-    name: frontend-deployment
-
+  name: alligrader-frontend-deployment
 spec:
-    replicas: 1
-    template:
-        metadata:
-            labels:
-                app: alligrader-frontend
+  replicas: 1 
+  selector:
+      app: alligrader-frontend-deployment
+  template: 
+    metadata:
+      labels:
+          app: alligrader-frontend-deployment
     spec:
-        containers:
-        - name: alligrader-frontend
-          image: alligrader/gradebook:latest
-          ports:
-          - containerPort: 80
+      containers:
+      - name: frontend
+        image: alligrader/gradebook:latest
+        ports:
+        - containerPort: 8080
